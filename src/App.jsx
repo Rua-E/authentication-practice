@@ -1,6 +1,7 @@
 import './App.css';
-
+import { auth } from './firebase/init'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+
 
 function App() {
   function register() {
@@ -21,16 +22,23 @@ function App() {
         <div className="dashboard__nav--content">
           <div className="flex align-center">
             <button className="btn btn__undercover burger">
+            <i class="fa-solid fa-grip-lines"></i>
               <svg></svg>
             </button>
             <figure className="logo">
-              <a href='/' className='nuxt-link-active' style="display:flex;" ></a>
+              <a href='/' className='nuxt-link-active'>
+                <img
+                src='https://frontendsimplified.com/_nuxt/img/Frontend%20Simplified%20Logo.853fbda.png'
+                className='logo__img'
+                >
+                </img>
+              </a>
             </figure>
           </div>
           <div className="nav__links">
             <span>
               <div id="el-popper-4529" className="el-popover el-popper">
-                <div style="min-height: 76px;" ></div>
+                <div ></div>
               </div>
               <span className='el-popover__reference-wrapper' ></span>
             </span>
