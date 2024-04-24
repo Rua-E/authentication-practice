@@ -3,7 +3,18 @@ import { auth } from './firebase/init'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 
+
+
 function App() {
+
+  function openMenu() {
+    document.body.classList += " menu--open" 
+  }
+  
+  function closeMenu() {
+     document.body.classList.remove('menu--open')
+  }
+
   function register() {
     createUserWithEmailAndPassword(auth, 'email@email.com', 'test123');
     console.log('register')
@@ -21,10 +32,11 @@ function App() {
       <nav className="dashboard__nav">
         <div className="dashboard__nav--content">
           <div className="flex align-center">
-            <button className="btn btn__undercover burger">
+            {/* <button className="btn btn__undercover burger">
+              <svg>
             <i class="fa-solid fa-grip-lines"></i>
-              <svg></svg>
-            </button>
+              </svg>
+            </button> */}
             <figure className="logo">
               <a href='/' className='nuxt-link-active'>
                 <img
@@ -35,14 +47,25 @@ function App() {
               </a>
             </figure>
           </div>
-          <div className="nav__links">
-            <span>
-              <div id="el-popper-4529" className="el-popover el-popper">
-                <div ></div>
-              </div>
-              <span className='el-popover__reference-wrapper' ></span>
-            </span>
-          </div>
+          <button className="links__button" onclick={openMenu()}>
+                Login
+          </button> 
+          <div className="menu">
+            <ul>
+              <li>
+                Login
+              </li>
+              <li>
+                Register
+              </li>
+              <li>
+                Logout
+              </li>
+              <li onclick={closeMenu()}>
+                X
+              </li>
+            </ul>
+            </div>  
         </div>
       </nav>
     </div>
