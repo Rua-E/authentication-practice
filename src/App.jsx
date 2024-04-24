@@ -21,16 +21,15 @@ function App() {
 
   function login() {
     signInWithEmailAndPassword(auth, 'email@email.com', 'test123')
-    .then(({user}) => {
-      console.log(user)
-      setUser(user)
+    .then(({ user }) => {
+      console.log(user);
+      setUser(user);
     })
     .catch((error) => {
-      // setErrorMEssage('User not found')
+      // setErrorMEssagegt('User not found')
       console.log(error)
     })
   }
-
 
   function register() {
     console.log('register')
@@ -42,6 +41,7 @@ function App() {
         console.log(error);
       })
   }
+
 
   function logout() {
     signOut(auth);
