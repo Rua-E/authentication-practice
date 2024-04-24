@@ -1,19 +1,36 @@
+import React from 'react';
 import './App.css';
 import { auth } from './firebase/init'
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 
 
 
 function App() {
+  const [user, setUser] = React.useState({});
+  const [loading, setLoading] = React.useState(true);
 
-  function openMenu() {
-    document.body.classList += " menu--open" 
+  React.useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setLoading(false);
+      if (user){
+        setUser(user)
+      }
+    })
+  })
+
+  function login() {
+    signInWithEmailAndPassword(auth, 'email@email.com', 'test123')
+    .then((user) => {
+      setUser(user)
+      console.log(user)
+    })
+    .catch((error) => {
+      // setErrorMEssage('User not found')
+      console.log(error)
+    })
   }
-  
-  function closeMenu() {
-     document.body.classList.remove('menu--open')
-  }
+
 
   function register() {
     createUserWithEmailAndPassword(auth, 'email@email.com', 'test123');
@@ -26,17 +43,28 @@ function App() {
       })
   }
 
+  function logout() {
+    signOut(auth);
+    setUser({});
+  }
+
+// OPEN & CLOSE MENU
+
+  function openMenu() {
+    document.body.classList += " menu--open" 
+  }
+  
+  function closeMenu() {
+     document.body.classList.remove('menu--open')
+  }
+
+
   return (
     <div className="App">
-      <button onClick={register}>Register</button>
+      
       <nav className="dashboard__nav">
         <div className="dashboard__nav--content">
           <div className="flex align-center">
-            {/* <button className="btn btn__undercover burger">
-              <svg>
-            <i class="fa-solid fa-grip-lines"></i>
-              </svg>
-            </button> */}
             <figure className="logo">
               <a href='/' className='nuxt-link-active'>
                 <img
@@ -53,13 +81,22 @@ function App() {
           <div className="menu">
             <ul>
               <li>
-                <a href="/" onClick={closeMenu()}>LOGIN</a>
+                <a href="/" onClick={login}>LOGIN</a>
+                <div>
+                  {user? user.email : 'User Not Found'}
+                </div>
               </li>
               <li>
-                <a href="/" onClick={closeMenu()}> REGISTER</a>
+                <a href="/" onClick={register}>REGISTER</a>
+                <div>
+                  {user? 'User already exists' : 'Registration page is laoding...'}
+                </div>
               </li>
               <li>
-                <a href="/" onClick={closeMenu()}>LOGOUT</a>
+                <a href="/" onClick={logout}>LOGOUT</a>
+                <div>
+                  {user? 'Loging out' : 'You are already logged out'}
+                </div>
               </li>
               <li>
                 <a href="/" onClick={closeMenu()}>X</a>
