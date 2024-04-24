@@ -21,9 +21,9 @@ function App() {
 
   function login() {
     signInWithEmailAndPassword(auth, 'email@email.com', 'test123')
-    .then((user) => {
-      setUser(user)
+    .then(({user}) => {
       console.log(user)
+      setUser(user)
     })
     .catch((error) => {
       // setErrorMEssage('User not found')
@@ -33,8 +33,8 @@ function App() {
 
 
   function register() {
-    createUserWithEmailAndPassword(auth, 'email@email.com', 'test123');
     console.log('register')
+    createUserWithEmailAndPassword(auth, 'email@email.com', 'test123')
       .then((user) => {
         console.log(user);
       })
@@ -81,25 +81,25 @@ function App() {
           <div className="menu">
             <ul>
               <li>
-                <a href="/" onClick={login}>LOGIN</a>
+                <button href="/" className="link__button" onClick={login}>LOGIN</button>
                 <div>
-                  {user? user.email : 'User Not Found'}
+                
                 </div>
               </li>
               <li>
-                <a href="/" onClick={register}>REGISTER</a>
+                <button href="/" className="link__button" onClick={register}>REGISTER</button>
                 <div>
-                  {user? 'User already exists' : 'Registration page is laoding...'}
+                  {/* {user? 'User already exists' : 'Registration page is laoding...'} */}
                 </div>
               </li>
               <li>
-                <a href="/" onClick={logout}>LOGOUT</a>
+                <button href="/" className="link__button" onClick={logout}>LOGOUT</button>
                 <div>
-                  {user? 'Loging out' : 'You are already logged out'}
+                  {/* {user? 'Loging out' : 'You are already logged out'} */}
                 </div>
               </li>
               <li>
-                <a href="/" onClick={closeMenu()}>X</a>
+                <a href="/" className="link__button" onClick={closeMenu()}>X</a>
               </li>
              
             </ul>

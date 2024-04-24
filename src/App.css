@@ -54,8 +54,12 @@
   transform-origin: 0px 0px;
 }
 
-.a {
+.button  {
   cursor: pointer;
+  text-decoration: none;
+}
+
+a {
   text-decoration: none;
 }
 
@@ -88,9 +92,26 @@
   right: 0;
 }
 
+.link__button {
+  padding: 10px;
+  margin: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: #4d4dff;
+  border-radius: 10%;
+  border-color: transparent;
+  text-align: center;
+  cursor: pointer;
+}
+
 ul {
   list-style-type: none;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 li {
