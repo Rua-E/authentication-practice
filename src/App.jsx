@@ -47,23 +47,24 @@ function App() {
               </a>
             </figure>
           </div>
-          <button className="links__button" onclick={openMenu()}>
+          <button className="links__button" onClick={openMenu}>
                 Login
           </button> 
           <div className="menu">
             <ul>
               <li>
-                Login
+                <a href="/" onClick={closeMenu()}>LOGIN</a>
               </li>
               <li>
-                Register
+                <a href="/" onClick={closeMenu()}> REGISTER</a>
               </li>
               <li>
-                Logout
+                <a href="/" onClick={closeMenu()}>LOGOUT</a>
               </li>
-              <li onclick={closeMenu()}>
-                X
+              <li>
+                <a href="/" onClick={closeMenu()}>X</a>
               </li>
+             
             </ul>
             </div>  
         </div>
