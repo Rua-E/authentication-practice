@@ -5,6 +5,7 @@
 }
 
 .dashboard__nav {
+  position: relative;
   color: #4d4dff;
   background-color: #faf9fa;
   border: 2px solid;
@@ -57,6 +58,7 @@
 .button  {
   cursor: pointer;
   text-decoration: none;
+  font-weight: bold;
 }
 
 a {
@@ -104,6 +106,7 @@ a {
   border-color: transparent;
   text-align: center;
   cursor: pointer;
+  
 }
 
 ul {
@@ -149,5 +152,19 @@ li {
   overflow-y: hidden;
 }
 
+.user {
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 30%;
+
+}
+
+.text {
+  
+  color: #4d4dff;
+}
 
 
