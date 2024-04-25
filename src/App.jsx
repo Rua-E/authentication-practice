@@ -2,8 +2,7 @@ import React from 'react';
 import './App.css';
 import { auth } from './firebase/init'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 function App() {
@@ -65,6 +64,10 @@ function App() {
       <nav className="dashboard__nav">
         <div className="dashboard__nav--content">
           <div className="flex align-center">
+            <div>
+            <FontAwesomeIcon icon="bars" />
+            
+            </div>
             <figure className="logo">
               <a href='/' className='nuxt-link-active'>
                 <img
